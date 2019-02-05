@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<body>
+
+	<div >
+		
+		<select name="dept" id="dept" onchange="getSelectedData()">
+			<option value="CSE">CSE</option>
+			<option value="SE">SE</option>
+			<option value="CSSE">CSSE</option>
+			<option value="CIS">CIS</option>
+		</select>
+
+		<div id="demo">
+
+		</div>
+	</div>
+
+	<script>
+		
+		function getSelectedData(){
+		
+		var dept = document.getElementById('dept').value;
+
+		var xhttp = new XMLHttpRequest();
+	  
+		xhttp.open("GET", "test.php?dept="+dept, true);
+		xhttp.send();
+
+			xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			     document.getElementById("demo").innerHTML = this.responseText;
+
+			    }
+			};
+		}
+
+	</script>
+</body>
+</html>
